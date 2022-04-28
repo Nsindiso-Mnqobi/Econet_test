@@ -3,7 +3,7 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-@app.route('/add_area/<name:string>', methods= ['GET','POST'])
+@app.route('/add_area/<area>', methods= ['GET','POST'])
 def get_area(area):
     if (request.method == "POST"):
         area = request.get_json()
@@ -12,7 +12,7 @@ def get_area(area):
     else:
         return jsonify({'Only ': 'POST DATA'})
         
-@app.route('/add_name/<name:string>', methods = ['GET','POST'])
+@app.route('/add_name/<name>', methods = ['GET','POST'])
 def get_name(name):
     if (request.method == "POST"):
         name = request.get_json()

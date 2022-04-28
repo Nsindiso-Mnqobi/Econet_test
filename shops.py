@@ -41,6 +41,7 @@ class econet_shops:
             shops.writerows(rows)
         
 if  __name__ == "__main__":
+    app.run(debug=False)
     api = Api()
     area = api.get_area()
     shop = api.get_name()

@@ -3,10 +3,13 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-#class api_end_points:
- #   @app.route("/", method = ['POST'])
-  #      def input_variables: 
-
+@app.route('/add/<area:string>', method = ['GET','POST'])
+def input_variables(area,name):
+    if (request.method == "POST"):
+        area = request.get_json()
+        return jsonify({'Your area' : area})
+    else:
+        return jsonify({'Only ': 'POST DATA'})
 
 class econet_shops:
 

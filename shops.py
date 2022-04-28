@@ -39,6 +39,7 @@ class econet_shops:
             shops.writerows(rows)
         
 if  __name__ == "__main__":
+    app.run(debug=True)
     area = get_area()
     shop = get_name()          
     li_st = [area,shop]

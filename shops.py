@@ -5,21 +5,21 @@ app = Flask(__name__)
 
 @app.route('/add_area/<area>', methods= ['GET','POST'])
 def get_area(area):
-        if (request.method == "POST"):
-            area = request.get_json()
-            return jsonify({'Your area : name' : area})
-            return area
-        else:
-            return jsonify({'Only ': 'POST DATA'})
+    if (request.method == "POST"):
+        area = request.get_json()
+        return jsonify({'Your area : name' : area})
+        return area
+    else:
+        return jsonify({'Only ': 'POST DATA'})
 
 @app.route('/add_name/<name>', methods = ['GET','POST'])
 def get_name(name):
-        if (request.method == "POST"):
-            name = request.get_json()
-            return jsonify({'Your area : name' :   name})
-            return name
-        else:
-            return jsonify({'Only ': 'POST DATA'})
+    if (request.method == "POST"):
+        name = request.get_json()
+        return jsonify({'Your area : name' :   name})
+        return name
+    else:
+        return jsonify({'Only ': 'POST DATA'})
 
 class econet_shops:
 

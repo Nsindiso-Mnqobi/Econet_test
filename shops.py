@@ -3,10 +3,23 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-#class api_end_points:
- #   @app.route("/", method = ['POST'])
-  #      def input_variables: 
+@app.route('/add_area/<area>', methods= ['GET','POST'])
+def get_area(area):
+    if (request.method == "POST"):
+        area = request.get_json()
+        return jsonify({'Your area : name' : area})
+        return area
+    else:
+        return jsonify({'Only ': 'POST DATA'})
 
+@app.route('/add_name/<name>', methods = ['GET','POST'])
+def get_name(name):
+    if (request.method == "POST"):
+        name = request.get_json()
+        return jsonify({'Your area : name' :   name})
+        return name
+    else:
+        return jsonify({'Only ': 'POST DATA'})
 
 class econet_shops:
 
@@ -24,11 +37,11 @@ class econet_shops:
             shops= csv.writer(shops_database)
             shops.writerow(header)
             shops.writerows(rows)
-            
-
+        
 if  __name__ == "__main__":
-    area = (input("What is the  area: "))
-    shop = (input("What is the shop name:  "))
+    app.run(debug=True)
+    area = get_area()
+    shop = get_name()          
     li_st = [area,shop]
     econet = econet_shops(li_st)
     econet.insert_shop()

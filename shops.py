@@ -3,25 +3,23 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-class Api:
-    
-    @app.route('/add_area/<name:string>', method = ['GET','POST'])
-    def get_area(area):
-        if (request.method == "POST"):
-            area = request.get_json()
-            return jsonify({'Your area : name' : area})
-            return area
-        else:
-            return jsonify({'Only ': 'POST DATA'})
+@app.route('/add_area/<name:string>', methods= ['GET','POST'])
+def get_area(area):
+    if (request.method == "POST"):
+        area = request.get_json()
+        return jsonify({'Your area : name' : area})
+        return area
+    else:
+        return jsonify({'Only ': 'POST DATA'})
         
-    @app.route('/add_name/<name:string>', method = ['GET','POST'])
-    def get_name(name):
-        if (request.method == "POST"):
-            name = request.get_json()
-            return jsonify({'Your area : name' :  + name})
-            return name
-        else:
-            return jsonify({'Only ': 'POST DATA'})
+@app.route('/add_name/<name:string>', methods = ['GET','POST'])
+def get_name(name):
+    if (request.method == "POST"):
+        name = request.get_json()
+        return jsonify({'Your area : name' :  + name})
+        return name
+    else:
+        return jsonify({'Only ': 'POST DATA'})
 
 class econet_shops:
 
@@ -41,10 +39,9 @@ class econet_shops:
             shops.writerows(rows)
         
 if  __name__ == "__main__":
-    app.run(debug=False)
-    api = Api()
-    area = api.get_area()
-    shop = api.get_name()
+    app.run(debug=True)
+    area = get_area()
+    shop = get_name()
     li_st = [area,shop]
     econet = econet_shops(li_st)
     econet.insert_shop()

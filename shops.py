@@ -16,7 +16,7 @@ def get_area(area):
 def get_name(name):
     if (request.method == "POST"):
         name = request.get_json()
-        return jsonify({'Your area : name' :  + name})
+        return jsonify({'Your area : name' :   name})
         return name
     else:
         return jsonify({'Only ': 'POST DATA'})
@@ -40,9 +40,9 @@ class econet_shops:
         
 if  __name__ == "__main__":
     app.run(debug=True)
-    area = get_area()
+    area_1 = get_area()
     shop = get_name()
-    li_st = [area,shop]
+    li_st = [area_1,shop]
     econet = econet_shops(li_st)
     econet.insert_shop()
     
